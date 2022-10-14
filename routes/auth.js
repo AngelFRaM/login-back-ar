@@ -79,6 +79,7 @@ router.post('/login', async (req, res) => {
 		})
 	}
 
+	router
 	// Creación del Token
 	const token = jwt.sign({
 		name: user.name,
@@ -98,4 +99,15 @@ router.post('/login', async (req, res) => {
 	*/
 })
 
+router.get('/list', async(req,res) => {
+	try{
+		const user = User.find()
+		res.json(user)
+	} catch{
+		return res.json.status(500).json({
+			mensaje: 'Error',
+			error
+		})
+	}
+})
 module.exports = router
