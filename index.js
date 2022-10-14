@@ -19,7 +19,7 @@ app.use(bodyparser.json())
 
 
 // Conexion a BD
-const url = `mongodb+srv://${process.env.USUARIO}:${process.env.PASSWORD}@cluster0.twjccj9.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
+const url = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.twjccj9.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
 const options = {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
