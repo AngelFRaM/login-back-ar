@@ -98,8 +98,8 @@ router.post('/login', async (req, res) => {
 	})
 	*/
 })
-/*
-router.get('/list', async(req,res) => {
+
+app.get('/list', (req,res) => {
 	try{
 		const user = User.find()
 		res.json(user)
@@ -109,6 +109,13 @@ router.get('/list', async(req,res) => {
 			error
 		})
 	}
+})
+/*
+app.get('/', (req, res) => {
+	res.json({
+		estado: true,
+		mensaje: 'Works!'
+	})
 })
 */
 module.exports = router
