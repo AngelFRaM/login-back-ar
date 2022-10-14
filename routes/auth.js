@@ -98,7 +98,7 @@ router.post('/login', async (req, res) => {
 	})
 	*/
 })
-
+/*
 router.get('/list', async(req,res) => {
 	try{
 		const user = User.find()
@@ -110,4 +110,5 @@ router.get('/list', async(req,res) => {
 		})
 	}
 })
+*/
 module.exports = router
