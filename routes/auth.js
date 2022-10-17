@@ -90,32 +90,31 @@ router.post('/login', async (req, res) => {
 		error: null,
 		data: { token }
 	})
-
-	/*
-	res.json({
-		error: null,
-		data: 'Bienvenido'
-	})
-	*/
 })
 
-app.get('/list', (req,res) => {
+router.get('/list', (req,res) => {
 	try{
-		const user = User.find()
-		res.json(user)
-	} catch{
-		return res.json.status(500).json({
-			mensaje: 'Error',
-			error
+		const users = User.find()
+		res.json({
+			error: null,
+			data: users
 		})
+	} catch{
+		return res.json.status(500).json(error)
 	}
 })
-/*
-app.get('/', (req, res) => {
-	res.json({
-		estado: true,
-		mensaje: 'Works!'
-	})
+
+router.post('/delete', async(req,res) =>{
+	let {id} = req.body.id
+	try{
+		await User.findByIdAndDelete(id)
+		res.json({
+			error: null,
+			message: 'SUCCESS'
+		})
+	} catch(error) {
+		res.status(400).json(error)
+	}
 })
-*/
+
 module.exports = router
