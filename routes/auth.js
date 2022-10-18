@@ -103,21 +103,20 @@ router.get('/list', (req,res) => {
 		return res.json.status(500).json(error)
 	}
 })
-router.post('/update', async(req,res) =>{
+router.post('/update', (req,res) =>{
 	let id = req.body._id
-	let name = req.body.name
-	let email = req.body.email
+	let update = {
+		name: req.body.name,
+		email: req.body.email
+	}
 	try {
-		await User.findByIdAndUpdate(id,{
-			name: name,
-			email: email
-		}, (err, updated) => {
+		User.findByIdAndUpdate(id, update, (err, updated) => {
 			if (err) {
 				res.status(400).json(err)
 			} else {
 				res.json({
 					error: null,
-					message: 'UPDATED'
+					message: updated
 				})
 			}
 		},)
