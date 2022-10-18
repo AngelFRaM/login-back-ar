@@ -103,6 +103,28 @@ router.get('/list', (req,res) => {
 		return res.json.status(500).json(error)
 	}
 })
+router.post('/update', async(req,res) =>{
+	let id = req.body._id
+	let name = req.body.name
+	let email = req.body.email
+	try {
+		await User.findByIdAndUpdate(id,{
+			name,
+			email
+		}, (err, updated) => {
+			if (err) {
+				res.status(400).json(err)
+			} else {
+				res.json({
+					error: null,
+					message: 'UPDATED'
+				})
+			}
+		},)
+	} catch (error) {
+		res.status(400).json(error)
+	}
+})
 
 router.post('/delete', async(req,res) =>{
 	let {id} = req.body.id
