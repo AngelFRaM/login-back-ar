@@ -109,8 +109,8 @@ router.post('/update', async(req,res) =>{
 	let email = req.body.email
 	try {
 		await User.findByIdAndUpdate(id,{
-			name,
-			email
+			name: name,
+			email: email
 		}, (err, updated) => {
 			if (err) {
 				res.status(400).json(err)
