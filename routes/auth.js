@@ -92,9 +92,9 @@ router.post('/login', async (req, res) => {
 	})
 })
 
-router.get('/list', (req,res) => {
+router.get('/list', async (req,res) => {
 	try{
-		const users = User.find()
+		const users = await User.find()
 		res.json({
 			error: null,
 			data: users
