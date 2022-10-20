@@ -128,7 +128,7 @@ router.post('/update', (req,res) =>{
 router.post('/delete', async (req,res) =>{
 	let {id} = req.body._id
 	try{
-		await User.findByIdAndDelete(id)
+		await User.findByIdAndDelete(req.body._id)
 		res.json({
 			error: null,
 			message: 'SUCCESS'
