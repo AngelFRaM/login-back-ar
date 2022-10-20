@@ -125,10 +125,10 @@ router.post('/update', (req,res) =>{
 	}
 })
 
-router.post('/delete', (req,res) =>{
+router.post('/delete', async (req,res) =>{
 	let {id} = req.body._id
 	try{
-		User.findByIdAndDelete(id)
+		await User.findByIdAndDelete(id)
 		res.json({
 			error: null,
 			message: 'SUCCESS'
