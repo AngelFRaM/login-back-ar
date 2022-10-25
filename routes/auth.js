@@ -125,17 +125,18 @@ router.post('/update', (req,res) =>{
 	}
 })
 
-router.post('/delete', async (req,res) =>{
-	let {id} = req.body._id
-	try{
-		await User.findByIdAndDelete(req.body._id)
+router.post('/delete', async (req, res) => {
+	let id = req.body.id
+	try {
+		await User.findByIdAndDelete(id)
 		res.json({
 			error: null,
 			message: 'SUCCESS'
 		})
-	} catch(error) {
+	} catch (error) {
 		res.status(400).json(error)
 	}
+
 })
 
 module.exports = router
